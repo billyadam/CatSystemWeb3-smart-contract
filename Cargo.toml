@@ -1,0 +1,13 @@
+[workspace]
+members = ["programs/*"]
+resolver = "2"
+
+[workspace.dependencies]
+anchor-lang = "1.0.0"
+anchor-spl = "1.0.0"
+
+[workspace.lints.rust]
+unexpected_cfgs = { level = "allow" }
+
+[profile.release]
+overflow-checks = true

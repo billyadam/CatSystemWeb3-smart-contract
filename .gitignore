@@ -1,0 +1,13 @@
+.anchor
+.DS_Store
+target/
+node_modules/
+dist/
+build/
+.surfpool/
+.claude
+
+# Solana keypairs — never commit private keys
+# Exception: program keypair is intentionally kept for reproducible builds
+# Remove this line if you want to exclude it too:
+# target/deploy/*-keypair.json
