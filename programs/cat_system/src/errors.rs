@@ -6,6 +6,12 @@ pub enum CatError {
     NameTooLong,
     #[msg("Description must be 512 characters or less")]
     DescriptionTooLong,
+    #[msg("Breed must be 32 characters or less")]
+    BreedTooLong,
+    #[msg("Coat color must be 32 characters or less")]
+    CoatColorTooLong,
+    #[msg("Eye color must be 32 characters or less")]
+    EyeColorTooLong,
     #[msg("Not the cat owner")]
     NotOwner,
 }
