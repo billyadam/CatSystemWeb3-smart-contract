@@ -12,6 +12,8 @@ pub enum CatError {
     CoatColorTooLong,
     #[msg("Eye color must be 32 characters or less")]
     EyeColorTooLong,
+    #[msg("Image URL must be 256 characters or less")]
+    ImageUrlTooLong,
     #[msg("Not the cat owner")]
     NotOwner,
 }

@@ -5,6 +5,7 @@ pub const MAX_DESC_LEN: usize = 512;
 pub const MAX_BREED_LEN: usize = 32;
 pub const MAX_COAT_COLOR_LEN: usize = 32;
 pub const MAX_EYE_COLOR_LEN: usize = 32;
+pub const MAX_IMAGE_URL_LEN: usize = 256;
 
 #[account]
 #[derive(InitSpace)]
@@ -25,6 +26,10 @@ pub struct Cat {
     pub body_size: BodySize,
     #[max_len(512)]
     pub description: String,
+    #[max_len(256)]
+    pub image_url_1: String,
+    #[max_len(256)]
+    pub image_url_2: String,
 }
 
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, InitSpace)]

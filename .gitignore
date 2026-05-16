@@ -11,3 +11,5 @@ build/
 # Exception: program keypair is intentionally kept for reproducible builds
 # Remove this line if you want to exclude it too:
 # target/deploy/*-keypair.json
+
+CLAUDE.md
