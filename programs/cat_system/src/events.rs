@@ -15,8 +15,7 @@ pub struct CatCreated {
     pub eye_color: String,
     pub ear_type: EarType,
     pub body_size: BodySize,
+    pub personality_trait: String,
     pub description: String,
-    pub image_url_1: String,
-    pub image_url_2: String,
     pub timestamp: i64,
 }
