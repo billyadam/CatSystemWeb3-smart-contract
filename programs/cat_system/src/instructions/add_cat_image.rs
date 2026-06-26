@@ -49,7 +49,7 @@ pub fn handler(
 
     emit!(CatImageAdded {
         cat: cat.key(),
-        image_pda: ctx.accounts.cat_image.key(),
+        image_pda: cat_image.key(),
         index: cat_image.index,
         image_url: cat_image.image_url.clone(),
         description: cat_image.description.clone(),
