@@ -9,7 +9,7 @@ use instructions::create_cat::*;
 use instructions::add_cat_image::*;
 use state::{Gender, BioProfile};
 
-declare_id!("A6aoUvfhcf2ZQ5qtBiHw2d8QLhUTugZytgX421NwKcjj");
+declare_id!("6hAoHrSuAg3eA55igUeXYS8ckVTih6RheK2E2N9Zvca");
 
 #[program]
 pub mod cat_system {
