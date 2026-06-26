@@ -7,7 +7,7 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-cat_system = "6hAoHrSuAg3eA55igUeXYS8ckVTih6RheK2E2N9Zvca"
+cat_system = "BVY3yTGbWAfAdJW7UW8SrKiTY33SE8dUHez72fHrkBpD"
 
 [provider]
 cluster = "devnet"
