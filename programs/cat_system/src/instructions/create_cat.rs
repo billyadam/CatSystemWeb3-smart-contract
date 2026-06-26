@@ -35,6 +35,7 @@ pub fn handler(
     ctx: Context<CreateCat>,
     name: String,
     gender: Gender,
+    date_of_birth: i64,
     bio_profile: BioProfile,
 ) -> Result<()> {
     require!(name.len() <= MAX_NAME_LEN, CatError::NameTooLong);
@@ -51,6 +52,7 @@ pub fn handler(
     cat.bump = ctx.bumps.cat;
     cat.name = name;
     cat.gender = gender;
+    cat.date_of_birth = date_of_birth;
     cat.bio_profile.breed = bio_profile.breed;
     cat.bio_profile.coat_color = bio_profile.coat_color;
     cat.bio_profile.coat_length = bio_profile.coat_length;
@@ -69,14 +71,8 @@ pub fn handler(
         cat_index,
         name: cat.name.clone(),
         gender: cat.gender.clone(),
-        breed: cat.bio_profile.breed.clone(),
-        coat_color: cat.bio_profile.coat_color.clone(),
-        coat_length: cat.bio_profile.coat_length.clone(),
-        eye_color: cat.bio_profile.eye_color.clone(),
-        ear_type: cat.bio_profile.ear_type.clone(),
-        body_size: cat.bio_profile.body_size.clone(),
-        personality_trait: cat.bio_profile.personality_trait.clone(),
-        description: cat.bio_profile.description.clone(),
+        date_of_birth: cat.date_of_birth,
+        bio_profile: cat.bio_profile.clone(),
         timestamp: Clock::get()?.unix_timestamp,
     });
 

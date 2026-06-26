@@ -1,6 +1,7 @@
 use anchor_lang::prelude::*;
 use crate::errors::CatError;
-use crate::state::{Cat, CatImage, MAX_IMAGE_COUNT_LEN, MAX_IMAGE_URL_LEN};
+use crate::events::CatImageAdded;
+use crate::state::{Cat, CatImage, MAX_IMAGE_COUNT_LEN, MAX_IMAGE_URL_LEN, MAX_IMAGE_DESC_LEN};
 
 #[derive(Accounts)]
 pub struct AddCatImage<'info> {
@@ -28,9 +29,11 @@ pub struct AddCatImage<'info> {
 pub fn handler(
     ctx: Context<AddCatImage>,
     image_url: String,
+    description: String,
 ) -> Result<()> {
     require!(ctx.accounts.cat.owner == ctx.accounts.payer.key(), CatError::NotOwner);
     require!(image_url.len() <= MAX_IMAGE_URL_LEN, CatError::ImageUrlTooLong);
+    require!(description.len() <= MAX_IMAGE_DESC_LEN, CatError::ImageDescriptionTooLong);
     require!(ctx.accounts.cat.image_count <= MAX_IMAGE_COUNT_LEN, CatError::ImageCountTooMany);
 
     let cat = &mut ctx.accounts.cat;
@@ -40,8 +43,17 @@ pub fn handler(
     cat_image.index = cat.image_count;
     cat_image.bump = ctx.bumps.cat_image;
     cat_image.image_url = image_url;
+    cat_image.description = description;
 
     cat.image_count += 1;
+
+    emit!(CatImageAdded {
+        cat: cat.key(),
+        image_pda: ctx.accounts.cat_image.key(),
+        index: cat_image.index,
+        image_url: cat_image.image_url.clone(),
+        description: cat_image.description.clone(),
+    });
 
     Ok(())
 }

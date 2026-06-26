@@ -7,6 +7,7 @@ pub const MAX_COAT_COLOR_LEN: usize = 32;
 pub const MAX_EYE_COLOR_LEN: usize = 32;
 pub const MAX_PERSONALITY_TRAIT_LEN: usize = 32;
 pub const MAX_IMAGE_URL_LEN: usize = 256;
+pub const MAX_IMAGE_DESC_LEN: usize = 64;
 pub const MAX_IMAGE_COUNT_LEN: u8 = 255;
 
 #[account]
@@ -17,6 +18,7 @@ pub struct Cat {
     #[max_len(32)]
     pub name: String,
     pub gender: Gender,
+    pub date_of_birth: i64,
     pub bio_profile: BioProfile,
     pub image_count: u8,
 }
@@ -29,6 +31,8 @@ pub struct CatImage {
     pub index: u8,
     #[max_len(256)]
     pub image_url: String,
+    #[max_len(64)]
+    pub description: String,
 }
 
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, InitSpace)]
